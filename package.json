@@ -1,0 +1,11 @@
+{
+  "name": "pl305-lab-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rochelle-m/dbms-lab-project.git",
+  "author": "Rochelle Martins",
+  "license": "MIT",
+  "dependencies": {
+    "vite": "^1.0.0-rc.9"
+  }
+}
