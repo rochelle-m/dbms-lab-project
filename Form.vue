@@ -23,30 +23,5 @@ export default {
 </script>
 
 <style scoped>
-div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-h3 {
-  text-decoration: underline;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
-}
-
-.input {
-  margin: 4px;
-  border: 1px solid rgb(95, 91, 91);
-  border-radius: 4px;
-  width: 250px;
-  padding: 4px 2px;
-}
-
-label {
-  text-transform: capitalize;
-  margin-top: 16px;
-}
+@import "./styles/form.css";
 </style>

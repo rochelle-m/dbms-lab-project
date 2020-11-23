@@ -45,48 +45,5 @@ export default {
 </script>
 
 <style>
-* {
-  background: rgb(34, 33, 33);
-  color: white;
-  box-sizing: border-box;
-  font-family: "Josefin Sans", sans-serif;
-}
-
-h2 {
-  font-size: 36px;
-  text-align: center;
-  padding-bottom: 20px;
-  border-bottom: 1px solid silver;
-}
-
-img {
-  width: 40%;
-  border-radius: 10% 0% 0% 10%;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-.btn {
-  background: rgb(1, 109, 55);
-  border: none;
-  padding: 10px;
-  margin-top: 8vh;
-  width: 10vw;
-  cursor: pointer;
-  border-radius: 6px;
-  font-size: 18px;
-}
-
-.btn:hover {
-  background: rgb(40, 165, 102);
-}
-
-.btns {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
+@import "./styles/main_file.css";
 </style>
