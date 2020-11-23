@@ -3,20 +3,43 @@
     <h2>{{ appTitle }}</h2>
     <div class="container">
       <img src="./images/girl-music.png" />
-      <div class="btns">
-        <button>Sign Up</button>
-        <button>Login</button>
+      <div class="btns" v-if="!signUp && !login">
+        <button class="btn" @click="displaySignUp">Sign Up</button>
+        <button class="btn" @click="displayLogin">Login</button>
       </div>
+      <my-form v-if="signUp" :inputs="inputs" name="Sign Up" />
+      <my-form v-if="login" :inputs="inputs.slice(1)" name="Login" />
     </div>
   </div>
 </template>
 
 <script>
+import MyForm from "./Form.vue";
 export default {
+  components: {
+    MyForm,
+  },
   data() {
     return {
       appTitle: `📻 Music & Podcast streaming ♪`,
+      inputs: [
+        { id: 1, name: "name", type: "text" },
+        { id: 2, name: "email", type: "email" },
+        { id: 3, name: "password", type: "password" },
+      ],
+      signUp: false,
+      login: false,
     };
+  },
+  methods: {
+    displaySignUp() {
+      this.signUp = true;
+      this.login = !this.signUp;
+    },
+    displayLogin() {
+      this.login = true;
+      this.signUp = !this.login;
+    },
   },
 };
 </script>
@@ -46,7 +69,7 @@ img {
   justify-content: center;
 }
 
-button {
+.btn {
   background: rgb(1, 109, 55);
   border: none;
   padding: 10px;
