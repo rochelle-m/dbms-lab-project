@@ -11,3 +11,9 @@ Database management for a platform to stream music and podcasts using [MySQL](ht
 - run `yarn install`
 - run `yarn vite` to start the server
 - visit http://localhost:3000
+
+### ERD
+
+### UML
+
+### Snapshots
