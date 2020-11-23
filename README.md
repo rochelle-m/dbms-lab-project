@@ -4,9 +4,10 @@ Database management for a platform to stream music and podcasts using [MySQL](ht
 
 ### Getting Started
 
-- [Yarn](https://classic.yarnpkg.com/lang/en/) and [Node.js](https://nodejs.org/en/)
-- clone this repo
-- (get key)
+- [Yarn](https://classic.yarnpkg.com/lang/en/)
+- [Node.js](https://nodejs.org/en/)
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench//)
+- after cloning this repo (and obtaining the key)
 - run `yarn install`
 - run `yarn vite` to start the server
 - visit http://localhost:3000
