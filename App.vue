@@ -33,12 +33,10 @@ export default {
   },
   methods: {
     displaySignUp() {
-      this.signUp = true;
-      this.login = !this.signUp;
+      [this.signUp, this.login] = [true, false];
     },
     displayLogin() {
-      this.login = true;
-      this.signUp = !this.login;
+      [this.login, this.signUp] = [true, false];
     },
   },
 };
