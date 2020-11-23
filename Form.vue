@@ -5,7 +5,7 @@
       <label :for="input.id" v-text="input.name"></label>
       <input class="input" :type="input.type" :id="input.id" />
     </form>
-    <input class="btn" type="submit" text="SignUp" />
+    <input class="btn" type="submit" :value="name" />
   </div>
 </template>
 

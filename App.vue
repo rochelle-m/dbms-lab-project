@@ -80,7 +80,7 @@ img {
   font-size: 18px;
 }
 
-button:hover {
+.btn:hover {
   background: rgb(40, 165, 102);
 }
 
