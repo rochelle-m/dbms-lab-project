@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Rochelle Martins",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^3.8.0",
+    "fastify-cors": "^5.0.0"
+  }
+}
