@@ -1,11 +1,18 @@
 <template>
   <div>
-    <h3>{{ name }}</h3>
-    <form v-for="input in inputs" :key="input.id">
-      <label :for="input.id" v-text="input.name"></label>
-      <input class="input" :type="input.type" :id="input.id" />
+    <form @submit.prevent="onSubmit">
+      <div class="form" v-for="input in inputs" :key="input.id">
+        <label :for="input.id" v-text="input.name"></label>
+        <input
+          class="input"
+          :id="input.id"
+          :type="input.type"
+          @input="onInput"
+          :name="input.name"
+        />
+      </div>
+      <button class="btn" type="submit">{{ name }}</button>
     </form>
-    <input class="btn" type="submit" :value="name" />
   </div>
 </template>
 
@@ -17,6 +24,16 @@ export default {
     },
     inputs: {
       type: Array,
+    },
+  },
+  methods: {
+    onInput($evt) {
+      this.$emit("inputChanged", $evt.target.value, $evt.target.name);
+    },
+    onSubmit($evt) {
+      this.$emit("submitted");
+      var inputs = document.querySelectorAll("input");
+      inputs.forEach((input) => (input.value = ""));
     },
   },
 };
