@@ -7,17 +7,17 @@
         <button class="btn" @click="displaySignUp">Sign Up</button>
         <button class="btn" @click="displayLogin">Login</button>
       </div>
-      <my-form v-if="signUp" :inputs="inputs" name="Sign Up" />
-      <my-form v-if="login" :inputs="inputs.slice(1)" name="Login" />
+      <my-input v-if="signUp" :inputs="inputs" name="Sign Up" />
+      <my-input v-if="login" :inputs="inputs.slice(1)" name="Login" />
     </div>
   </div>
 </template>
 
 <script>
-import MyForm from "./Form.vue";
+import MyInput from "./MyInput.vue";
 export default {
   components: {
-    MyForm,
+    MyInput,
   },
   data() {
     return {
