@@ -7,14 +7,26 @@
         <button class="btn" @click="displaySignUp">Sign Up</button>
         <button class="btn" @click="displayLogin">Login</button>
       </div>
-      <my-form v-if="signUp" :inputs="inputs" name="Sign Up" />
-      <my-form v-if="login" :inputs="inputs.slice(1)" name="Login" />
+      <my-form
+        v-if="signUp"
+        :inputs="inputs"
+        name="Sign Up"
+        @inputChanged="setValues"
+        @submitted="signup"
+      />
+      <my-form
+        v-if="login"
+        :inputs="inputs.slice(1)"
+        name="Login"
+        @inputChanged="setValues"
+        @submitted="submit"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import MyForm from "./Form.vue";
+import MyForm from "./MyForm.vue";
 export default {
   components: {
     MyForm,
@@ -29,6 +41,11 @@ export default {
       ],
       signUp: false,
       login: false,
+      user: {
+        name: "",
+        password: "",
+        email: "",
+      },
     };
   },
   methods: {
@@ -37,6 +54,18 @@ export default {
     },
     displayLogin() {
       [this.login, this.signUp] = [true, false];
+    },
+    setValues(value, name) {
+      this.user[name] = value;
+    },
+    async signup() {
+      const response = await fetch("http://localhost:3001/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.user),
+      });
+      const data = await response.json();
+      console.log(data);
     },
   },
 };
