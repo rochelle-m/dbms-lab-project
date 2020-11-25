@@ -3,7 +3,7 @@
 Database management for a platform to stream music and podcasts using [MySQL](https://www.mysql.com/) and [Vue.js 3](https://v3.vuejs.org/).
 The user can register. The user can like songs, create playlists, follow their favourite podcasts.
 
-+----Entities----+
+###### Entities
 
 - User
 - Artists
@@ -14,8 +14,6 @@ The user can register. The user can like songs, create playlists, follow their f
 - Podcasters
 - Episodes
 - Favourites
-
-+--------------+
 
 ### Getting Started
 
