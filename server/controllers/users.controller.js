@@ -1,4 +1,4 @@
-const User = require("../model/users.model.js");
+const User = require("../models/users.model.js");
 
 module.exports = (req, res) => {
   if (!req.body) {
