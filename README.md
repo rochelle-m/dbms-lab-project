@@ -4,15 +4,17 @@ Database management for a platform to stream music and podcasts using [MySQL](ht
 The user can register. The user can like songs, create playlists, follow their favourite podcasts.
 
 +----Entities----+
-User
-Artists
-Songs
-Albums
-Playlists
-Podcasts
-Podcasters
-Episodes
-Favourites
+
+- User
+- Artists
+- Songs
+- Albums
+- Playlists
+- Podcasts
+- Podcasters
+- Episodes
+- Favourites
+
 +--------------+
 
 ### Getting Started
