@@ -14,6 +14,10 @@ Database management for a platform to stream music and podcasts using [MySQL](ht
 
 ### ERD
 
+![ERD](./images/readme-pics/ERD.png)
+
+![ima2](./images/readme-pics/DIAGRAM.png)
+
 ### UML
 
 ### Snapshots
