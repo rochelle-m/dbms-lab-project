@@ -19,7 +19,7 @@
         :inputs="inputs.slice(1)"
         name="Login"
         @inputChanged="setValues"
-        @submitted="submit"
+        @submitted="onLogin"
       />
     </div>
   </div>
@@ -60,6 +60,15 @@ export default {
     },
     async signup() {
       const response = await fetch("http://localhost:3001/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(this.user),
+      });
+      const data = await response.json();
+      console.log(data);
+    },
+    async onLogin() {
+      const response = await fetch("http://localhost:3001/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(this.user),
