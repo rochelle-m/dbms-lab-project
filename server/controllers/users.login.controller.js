@@ -13,10 +13,7 @@ module.exports = (req, res) => {
   });
 
   user.login(user, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occurred while logging in",
-      });
+    if (err) res.status(500).send(err);
     else res.send(data);
   });
 };

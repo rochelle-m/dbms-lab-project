@@ -46,6 +46,7 @@ export default {
         password: "",
         email: "",
       },
+      auth: false,
     };
   },
   methods: {
@@ -65,6 +66,7 @@ export default {
         body: JSON.stringify(this.user),
       });
       const data = await response.json();
+      this.auth = data.auth;
       console.log(data);
     },
     async onLogin() {
@@ -74,6 +76,7 @@ export default {
         body: JSON.stringify(this.user),
       });
       const data = await response.json();
+      this.auth = data.auth;
       console.log(data);
     },
   },

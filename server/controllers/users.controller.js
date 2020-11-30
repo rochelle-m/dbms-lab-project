@@ -14,10 +14,7 @@ module.exports = (req, res) => {
   });
 
   newUser.create(newUser, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the user.",
-      });
+    if (err) res.status(500).send(err);
     else res.send(data);
   });
 };

@@ -12,16 +12,15 @@ class User {
   create(newUser, result) {
     emailExists(newUser.email, (numOfEmailEntries) => {
       if (numOfEmailEntries) {
-        result({ message: "Duplicate email" }, null);
+        result({ message: "Duplicate email", auth: false }, null);
         return;
       }
       db.query("INSERT INTO users SET ?", newUser, (err, res) => {
         if (err) {
-          result(err, null);
+          result({ ...err, auth: false }, null);
           return;
         }
-        console.log({ id: res.insertId, ...newUser });
-        result(null, { id: res.insertId, ...newUser });
+        result(null, { id: res.insertId, ...newUser, auth: true });
       });
     });
   }
