@@ -1,5 +1,6 @@
 const db = require("../db/db.js");
 const emailExists = require("./emailExists.js");
+const passwordCheck = require("./passwordCheck.js");
 
 class User {
   constructor(user) {
@@ -28,11 +29,12 @@ class User {
   login(user, result) {
     emailExists(user.email, (numOfEmailEntries) => {
       if (!numOfEmailEntries) {
-        console.log(numOfEmailEntries);
         result({ message: "This email does not exist" }, null);
         return;
       }
-      // TODO check email & password match
+      passwordCheck(user, (matches) => {
+        result(null, { auth: matches });
+      });
     });
   }
 }

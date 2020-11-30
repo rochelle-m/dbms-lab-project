@@ -15,7 +15,7 @@ module.exports = (req, res) => {
   user.login(user, (err, data) => {
     if (err)
       res.status(500).send({
-        message: err.message || "Some error occurred while creating the user.",
+        message: err.message || "Some error occurred while logging in",
       });
     else res.send(data);
   });
