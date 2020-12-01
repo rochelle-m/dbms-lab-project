@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const db = require("./db/db.js");
+const db = require("../db/db.js");
 const fetch = require("node-fetch");
 
 db.query(
@@ -13,7 +13,7 @@ db.query(
   }
 );
 
-(async function fetchGenres() {
+(async function () {
   const res = await fetch(
     "https://api.spotify.com/v1/recommendations/available-genre-seeds",
     {
