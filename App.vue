@@ -27,6 +27,7 @@
 
 <script>
 import MyForm from "./MyForm.vue";
+import request from "./utils/request.js";
 export default {
   components: {
     MyForm,
@@ -60,22 +61,12 @@ export default {
       this.user[name] = value;
     },
     async signup() {
-      const response = await fetch("http://localhost:3001/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.user),
-      });
-      const data = await response.json();
+      const data = await request("http://localhost:3001/register", this.user);
       this.auth = data.auth;
       console.log(data);
     },
     async onLogin() {
-      const response = await fetch("http://localhost:3001/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.user),
-      });
-      const data = await response.json();
+      const data = await request("http://localhost:3001/login", this.user);
       this.auth = data.auth;
       console.log(data);
     },
