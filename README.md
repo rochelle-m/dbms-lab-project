@@ -20,7 +20,7 @@ The user can register. The user can like songs, create playlists, follow their f
 - [Yarn](https://classic.yarnpkg.com/lang/en/)
 - [Node.js](https://nodejs.org/en/)
 - [MySQL Workbench](https://dev.mysql.com/downloads/workbench//)
-- after starting the the backend and frontend server
+- after starting up the dev server, the MySQL server and the backend server
   visit http://localhost:3000
 
 ### ERD
