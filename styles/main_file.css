@@ -29,6 +29,7 @@ img {
   width: 10vw;
   cursor: pointer;
   border-radius: 6px;
+  text-decoration: none;
   font-size: 18px;
   border: 1px solid white;
 }
