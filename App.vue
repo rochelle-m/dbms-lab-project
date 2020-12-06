@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ appTitle }}</h2>
+    <h2>📻 Music & Podcast streaming ♪</h2>
     <div class="container">
       <img src="./images/girl-music.png" />
       <div class="btns" v-if="!signUp && !login">
@@ -34,7 +34,6 @@ export default {
   },
   data() {
     return {
-      appTitle: `📻 Music & Podcast streaming ♪`,
       inputs: [
         { id: 1, name: "name", type: "text" },
         { id: 2, name: "email", type: "email" },
