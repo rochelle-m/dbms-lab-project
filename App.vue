@@ -63,11 +63,13 @@ export default {
       const data = await request("http://localhost:3001/register", this.user);
       this.auth = data.auth;
       console.log(data);
+      if (this.auth) this.$router.push("/home");
     },
     async onLogin() {
       const data = await request("http://localhost:3001/login", this.user);
       this.auth = data.auth;
       console.log(data);
+      if (this.auth) this.$router.push("/home");
     },
   },
 };
