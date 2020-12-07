@@ -7,10 +7,9 @@
 <script>
 export default {
   beforeRouteEnter(to, from, next) {
-    // TODO check if auth, if auth call next()
-
-    // returns back to home page
-    next("/");
+    // auth prop is a string
+    if (to.params.auth == "true") next();
+    else next("/");
   },
 };
 </script>

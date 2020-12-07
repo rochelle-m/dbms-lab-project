@@ -62,14 +62,12 @@ export default {
     async signup() {
       const data = await request("http://localhost:3001/register", this.user);
       this.auth = data.auth;
-      console.log(data);
-      if (this.auth) this.$router.push("/home");
+      this.$router.push({ name: "home", params: { auth: this.auth } });
     },
     async onLogin() {
       const data = await request("http://localhost:3001/login", this.user);
       this.auth = data.auth;
-      console.log(data);
-      if (this.auth) this.$router.push("/home");
+      this.$router.push({ name: "home", params: { auth: this.auth } });
     },
   },
 };

@@ -10,8 +10,10 @@ export const router = createRouter({
       component: App,
     },
     {
+      name: "home",
       path: "/home",
       component: Home,
+      props: true,
     },
   ],
 });
