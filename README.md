@@ -25,9 +25,9 @@ The user can register. The user can like songs, create playlists, follow their f
 
 ### ERD
 
-![ERD](./images/readme-pics/ERD.png)
+![ERD](./images/ERD/ERD.png)
 
-![ima2](./images/readme-pics/DIAGRAM.png)
+![ima2](./images/ERD/DIAGRAM.png)
 
 ### UML
 
