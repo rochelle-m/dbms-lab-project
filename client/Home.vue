@@ -15,11 +15,14 @@
       >
       </i>
     </div>
+    <card-list />
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
+import CardList from "./CardList.vue";
+
 const key = import.meta.env.VITE_ACCESS_KEY;
 export default {
   beforeRouteEnter(to, from, next) {
@@ -27,7 +30,9 @@ export default {
     if (to.params.auth == "true") next();
     else next("/");
   },
-
+  components: {
+    CardList,
+  },
   setup() {
     const searchStr = ref("");
 
