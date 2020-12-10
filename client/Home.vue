@@ -21,6 +21,7 @@
 
 <script>
 import { ref } from "vue";
+import { request } from "./utils/request_get.js";
 import CardList from "./CardList.vue";
 
 const key = import.meta.env.VITE_ACCESS_KEY;
@@ -28,7 +29,7 @@ export default {
   beforeRouteEnter(to, from, next) {
     // auth prop is a string
     if (to.params.auth == "true") next();
-    else next("/");
+    else next();
   },
   components: {
     CardList,
@@ -41,21 +42,14 @@ export default {
     };
 
     const search = async function () {
-      const res = await fetch(
-        "https://api.spotify.com/v1/search?q=" +
-          searchStr.value +
-          "&type=track,artist,",
-        {
-          method: "GET",
-          headers: {
-            Authorization: "Bearer " + key,
-          },
-        }
+      const res = await request(
+        "https://api.spotify.com/v1/search",
+        key,
+        searchStr.value,
+        "&type=track,artist,playlist,episode,album"
       );
-      const searchData = await res.json();
-
-      console.log(searchData);
     };
+
     return {
       search,
       getInputTextOnClick,
