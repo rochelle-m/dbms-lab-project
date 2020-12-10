@@ -6,9 +6,6 @@
         <img :src="item?.images[0]?.url" alt="" />
       </template>
       <template v-slot:title> {{ item.name }} </template>
-      <template v-slot:description>
-        <a :href="item.href"> View</a>
-      </template>
     </card>
   </div>
 </template>
