@@ -1,8 +1,16 @@
 * {
-  background: rgb(10, 1, 32);
-  color: white;
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  background: rgb(10, 1, 32);
+  color: white;
+}
+
+input {
+  background: rgb(10, 1, 32);
+  color: white;
 }
 
 h2 {

@@ -15,7 +15,13 @@
       >
       </i>
     </div>
-    <card-list />
+    <div>
+      <card-list :dataItems="artists" />
+      <card-list :dataItems="albums" />
+      <card-list :dataItems="episodes" />
+      <card-list :dataItems="playlists" />
+      <card-list :dataItems="tracks" />
+    </div>
   </div>
 </template>
 
@@ -35,6 +41,16 @@ export default {
   components: {
     CardList,
   },
+  data() {
+    return {
+      tracks: [],
+      artists: [],
+      playlists: [],
+      episodes: [],
+      albums: [],
+      allTypes: [],
+    };
+  },
   setup() {
     const searchStr = ref("");
 
@@ -47,8 +63,11 @@ export default {
         "https://api.spotify.com/v1/search",
         key,
         searchStr.value,
-        "&type=track,artist,playlist,episode,album"
+        "&type=track,artist,playlist,episode,album&limit=6"
       );
+      this.allTypes = Object.keys(res);
+      this.allTypes.map((type) => (this[type] = res[type].items));
+      console.log(this.artists);
     };
 
     return {

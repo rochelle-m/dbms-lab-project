@@ -1,10 +1,14 @@
 <template>
   <div class="list">
-    <card>
-      <template v-slot:type> </template>
-      <template v-slot:image></template>
-      <template v-slot:title> </template>
-      <template v-slot:description> </template>
+    <card v-for="item in dataItems" :key="item.id">
+      <template v-slot:type>{{ item.type }}</template>
+      <template v-slot:image>
+        <img :src="item?.images[0]?.url" alt="" />
+      </template>
+      <template v-slot:title> {{ item.name }} </template>
+      <template v-slot:description>
+        <a :href="item.href"> View</a>
+      </template>
     </card>
   </div>
 </template>
@@ -15,11 +19,22 @@ export default {
   components: {
     Card,
   },
+  props: {
+    dataItems: {
+      type: Array,
+    },
+  },
 };
 </script>
 
 <style scoped>
 .list {
-  margin: 8vh 0;
+  margin: 4vh 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+img {
+  width: 120px;
 }
 </style>
