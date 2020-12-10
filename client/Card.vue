@@ -20,7 +20,8 @@ export default {};
 .card {
   display: flex;
   flex-direction: column;
-  border: 1px solid silver;
+  background-color: white;
+  color: rgb(20, 20, 41);
   border-radius: 8px;
   width: 160px;
   margin: 0 5px;
@@ -41,7 +42,7 @@ export default {};
 }
 
 .type {
-  color: gray;
+  color: rgb(75, 75, 75);
   margin-top: 8px;
   text-align: center;
 }
