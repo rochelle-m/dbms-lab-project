@@ -29,6 +29,7 @@ export default {
   beforeRouteEnter(to, from, next) {
     // auth prop is a string
     if (to.params.auth == "true") next();
+    // temporarily relax next("/")
     else next();
   },
   components: {
@@ -60,39 +61,5 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  padding: 20px;
-}
-
-.search-container {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  width: 50vw;
-  border-radius: 5px;
-  border: 1px solid silver;
-  box-shadow: 1px 1px 2px 1px rgb(204, 204, 204);
-}
-
-.search-container:hover {
-  box-shadow: 1px 1px 2px 1px rgb(122, 122, 122);
-}
-
-.searchbar {
-  height: 3vh;
-  width: 45.8vw;
-  margin: 0.75vw;
-  border: none;
-  outline: none;
-  font-size: 3vmin;
-}
-
-.searchicon {
-  cursor: pointer;
-  position: relative;
-}
-
-.searchicon:hover {
-  transform: scale(1.2);
-}
+@import "./styles/home.css";
 </style>
