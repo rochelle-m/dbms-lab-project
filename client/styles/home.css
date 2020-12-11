@@ -33,3 +33,12 @@
 .searchicon:hover {
   transform: scale(1.2);
 }
+
+.header-container {
+  display: flex;
+}
+
+.account {
+  cursor: pointer;
+  font-size: 30px;
+}
