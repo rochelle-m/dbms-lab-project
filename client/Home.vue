@@ -27,7 +27,6 @@
 
 <script>
 import { ref } from "vue";
-import { request } from "./utils/request_get.js";
 import CardList from "./CardList.vue";
 
 const key = import.meta.env.VITE_ACCESS_KEY;
@@ -58,16 +57,8 @@ export default {
       searchStr.value = $evt.target.value;
     };
 
-    const search = async function () {
-      const res = await request(
-        "https://api.spotify.com/v1/search",
-        key,
-        searchStr.value,
-        "&type=track,artist,playlist,episode,album&limit=6"
-      );
-      this.allTypes = Object.keys(res);
-      this.allTypes.map((type) => (this[type] = res[type].items));
-      console.log(this.artists);
+    const search = function () {
+      console.log("search");
     };
 
     return {
