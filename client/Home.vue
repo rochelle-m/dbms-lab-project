@@ -38,7 +38,6 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import CardList from "./CardList.vue";
 
-const key = import.meta.env.VITE_ACCESS_KEY;
 export default {
   beforeRouteEnter(to, from, next) {
     if (to.params.auth == "true" || from.name == "account") next();
@@ -76,7 +75,7 @@ export default {
     const openAccount = function () {
       router.push({
         name: "account",
-        params: { id: router.currentRoute._rawValue.params.id },
+        params: { id: currentUserId },
       });
     };
 
