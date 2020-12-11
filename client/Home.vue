@@ -74,7 +74,10 @@ export default {
     const search = function () {};
 
     const openAccount = function () {
-      router.push({ name: "account", params: { auth: this.auth } });
+      router.push({
+        name: "account",
+        params: { id: router.currentRoute._rawValue.params.id },
+      });
     };
 
     return {
