@@ -2,13 +2,13 @@ const db = require("../db/db.js");
 
 module.exports = function (email, result) {
   db.query(
-    `SELECT count(email) as num from users where email ='${email}'`,
+    `SELECT idusers as num from users where email ='${email}'`,
     (err, res) => {
       if (err) {
-        result(-1);
+        result({ id: -1 });
         return;
       }
-      result(res[0].num);
+      result({ auth: res[0]?.num, id: res[0]?.num });
     }
   );
 };

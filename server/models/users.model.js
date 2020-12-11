@@ -10,8 +10,8 @@ class User {
   }
 
   create(newUser, result) {
-    emailExists(newUser.email, (numOfEmailEntries) => {
-      if (numOfEmailEntries) {
+    emailExists(newUser.email, (res) => {
+      if (res.id != undefined) {
         result({ message: "Duplicate email", auth: false }, null);
         return;
       }
@@ -26,13 +26,14 @@ class User {
   }
 
   login(user, result) {
-    emailExists(user.email, (numOfEmailEntries) => {
-      if (!numOfEmailEntries) {
+    emailExists(user.email, (res) => {
+      if (!res.id) {
         result({ message: "This email does not exist" }, null);
         return;
       }
+
       passwordCheck(user, (matches) => {
-        result(null, { auth: matches });
+        result(null, { auth: matches, id: res.id });
       });
     });
   }
