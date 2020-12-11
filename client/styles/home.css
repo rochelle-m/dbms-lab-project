@@ -2,7 +2,7 @@
   padding: 20px;
 }
 
-.search-container {
+.header {
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
   box-shadow: 1px 1px 2px 1px rgb(204, 204, 204);
 }
 
-.search-container:hover {
+.header:hover {
   box-shadow: 1px 1px 2px 1px rgb(122, 122, 122);
 }
 

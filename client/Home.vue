@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="search-container">
+    <div class="header">
       <input
         class="searchbar"
         type="text"
