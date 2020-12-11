@@ -22,7 +22,7 @@
         </i>
       </div>
     </div>
-
+    {{ currentUserId }}
     <div>
       <card-list :dataItems="artists" />
       <card-list :dataItems="albums" />
@@ -41,10 +41,8 @@ import CardList from "./CardList.vue";
 const key = import.meta.env.VITE_ACCESS_KEY;
 export default {
   beforeRouteEnter(to, from, next) {
-    // auth prop is a string
-    if (to.params.auth == "true") next();
-    // temporarily relax next("/")
-    else next();
+    if (to.params.auth == "true" || from.name == "account") next();
+    else next("/");
   },
   components: {
     CardList,
@@ -57,7 +55,12 @@ export default {
       episodes: [],
       albums: [],
       allTypes: [],
+      currentUserId: null,
     };
+  },
+  mounted() {
+    const router = useRouter();
+    this.currentUserId = router.currentRoute._rawValue.params.id;
   },
   setup() {
     const searchStr = ref("");
@@ -68,12 +71,9 @@ export default {
       searchStr.value = $evt.target.value;
     };
 
-    const search = function () {
-      console.log("search");
-    };
+    const search = function () {};
 
     const openAccount = function () {
-      console.log(this);
       router.push({ name: "account", params: { auth: this.auth } });
     };
 
