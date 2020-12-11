@@ -35,6 +35,7 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import CardList from "./CardList.vue";
 
 const key = import.meta.env.VITE_ACCESS_KEY;
@@ -61,6 +62,8 @@ export default {
   setup() {
     const searchStr = ref("");
 
+    const router = useRouter();
+
     const getInputTextOnClick = function ($evt) {
       searchStr.value = $evt.target.value;
     };
@@ -69,7 +72,11 @@ export default {
       console.log("search");
     };
 
-    const openAccount = function () {};
+    const openAccount = function () {
+      console.log(this);
+      router.push({ name: "account", params: { auth: this.auth } });
+    };
+
     return {
       search,
       getInputTextOnClick,
