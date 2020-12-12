@@ -22,7 +22,6 @@
         </i>
       </div>
     </div>
-    {{ currentUserId }}
     <div>
       <card-list :dataItems="artists" />
       <card-list :dataItems="albums" />
@@ -54,12 +53,7 @@ export default {
       episodes: [],
       albums: [],
       allTypes: [],
-      currentUserId: null,
     };
-  },
-  mounted() {
-    const router = useRouter();
-    this.currentUserId = router.currentRoute._rawValue.params.id;
   },
   setup() {
     const searchStr = ref("");
@@ -75,7 +69,7 @@ export default {
     const openAccount = function () {
       router.push({
         name: "account",
-        params: { id: currentUserId },
+        params: { id: router.currentRoute._rawValue.params.id },
       });
     };
 
