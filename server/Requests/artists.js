@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const artistIds = require("./artistIds.js");
+const artistIds = require("./ids.artist.js");
 
 const db = require("../db/db.js");
 const fetch = require("node-fetch");
