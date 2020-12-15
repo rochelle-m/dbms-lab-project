@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const tracksIds = require("./ids.tracks.js");
+const tracksIds = require("./ids/tracks.js");
 
 const db = require("../db/db.js");
 const fetch = require("node-fetch");
