@@ -12,14 +12,14 @@
         :inputs="inputs"
         name="Sign Up"
         @inputChanged="setValues"
-        @submitted="signup"
+        @submitted="onSubmit('register')"
       />
       <my-form
         v-if="login"
         :inputs="inputs.slice(1)"
         name="Login"
         @inputChanged="setValues"
-        @submitted="onLogin"
+        @submitted="onSubmit('login')"
       />
     </div>
   </div>
@@ -59,16 +59,10 @@ export default {
     setValues(value, name) {
       this.user[name] = value;
     },
-    async signup() {
-      const data = await request("http://localhost:3001/register", this.user);
+    async onSubmit(path) {
+      const data = await request(`http://localhost:3001/${path}`, this.user);
       console.log(data);
       this.auth = data.auth;
-      this.$router.push({ name: "home", params: data });
-    },
-    async onLogin() {
-      const data = await request("http://localhost:3001/login", this.user);
-      this.auth = data.auth;
-      console.log(data);
       this.$router.push({ name: "home", params: data });
     },
   },
