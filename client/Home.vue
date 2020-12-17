@@ -64,7 +64,14 @@ export default {
       searchStr.value = $evt.target.value;
     };
 
-    const search = function () {};
+    const search = async function () {
+      const res = await fetch(
+        "http://localhost:3001/search?val=" + searchStr.value
+      );
+
+      const data = await res.json();
+      console.log(data);
+    };
 
     const openAccount = function () {
       router.push({
