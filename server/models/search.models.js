@@ -1,8 +1,8 @@
 const sql = require("../db/db");
 
-const search = (searchValue, result) => {
+const search = ({ val, type }, result) => {
   sql.query(
-    `SELECT * FROM artists where artist_name LIKE '%${searchValue}%'`,
+    `SELECT * FROM artists where artist_name LIKE '%${val}%'`,
     (err, res) => {
       if (err) {
         console.log("error: ", err);

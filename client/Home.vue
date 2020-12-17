@@ -66,6 +66,7 @@ export default {
       albums: [],
       allTypes: [],
       currentCategory: "",
+      searchStr: "",
     };
   },
   methods: {
@@ -75,10 +76,20 @@ export default {
 
       console.log(this.categories);
     },
+    async search() {
+      console.log(this.searchStr);
+      const res = await fetch(
+        `http://localhost:3001/search?val=${this.searchStr}&type=${this.currentCategory}`
+      );
+
+      const data = await res.json();
+      console.log(data);
+    },
+    getInputTextOnClick($evt) {
+      this.searchStr = $evt.target.value;
+    },
   },
   setup() {
-    const searchStr = ref("");
-
     const categories = [
       {
         name: "artists",
@@ -100,19 +111,6 @@ export default {
 
     const router = useRouter();
 
-    const getInputTextOnClick = function ($evt) {
-      searchStr.value = $evt.target.value;
-    };
-
-    const search = async function () {
-      const res = await fetch(
-        "http://localhost:3001/search?val=" + searchStr.value
-      );
-
-      const data = await res.json();
-      console.log(data);
-    };
-
     const openAccount = function () {
       router.push({
         name: "account",
@@ -121,9 +119,6 @@ export default {
     };
 
     return {
-      search,
-      getInputTextOnClick,
-      searchStr,
       openAccount,
       categories,
     };
