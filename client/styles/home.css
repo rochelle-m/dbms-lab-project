@@ -42,3 +42,26 @@
   cursor: pointer;
   font-size: 30px;
 }
+
+.search-body {
+  margin: 15px auto;
+  width: 45.8vw;
+  color: darkgray;
+  font-size: x-small;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-item {
+  border: 1px solid silver;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.nav-item:hover,
+.selected {
+  background-color: silver;
+  color: black;
+  cursor: pointer;
+}

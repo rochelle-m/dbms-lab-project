@@ -22,6 +22,18 @@
         </i>
       </div>
     </div>
+    <nav class="search-body">
+      <a
+        class="nav-item"
+        v-for="category in categories"
+        :class="{ selected: category.show }"
+        :key="category.name"
+        @click="selected(category)"
+      >
+        {{ category.name }}
+      </a>
+    </nav>
+    {{ currentCategory }}
     <div>
       <card-list :dataItems="artists" />
       <card-list :dataItems="albums" />
@@ -33,7 +45,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import CardList from "./CardList.vue";
 
@@ -53,10 +65,38 @@ export default {
       episodes: [],
       albums: [],
       allTypes: [],
+      currentCategory: "",
     };
+  },
+  methods: {
+    selected({ name, show }) {
+      this.currentCategory = name;
+      // this.categories.filter((c) => c.name == name)[0].show = true;
+
+      console.log(this.categories);
+    },
   },
   setup() {
     const searchStr = ref("");
+
+    const categories = [
+      {
+        name: "artists",
+        show: false,
+      },
+      {
+        name: "albums",
+        show: false,
+      },
+      {
+        name: "tracks",
+        show: false,
+      },
+      {
+        name: "podcasts",
+        show: false,
+      },
+    ];
 
     const router = useRouter();
 
@@ -85,6 +125,7 @@ export default {
       getInputTextOnClick,
       searchStr,
       openAccount,
+      categories,
     };
   },
 };
