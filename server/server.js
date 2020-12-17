@@ -1,6 +1,6 @@
 const fastify = require("fastify");
 
-const { signup, login } = require("./controllers/users");
+const { signup, login, searchUser } = require("./controllers/users");
 const search = require("./controllers/search.js");
 
 const app = fastify();

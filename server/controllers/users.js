@@ -37,4 +37,6 @@ const login = (req, res) => {
   });
 };
 
-module.exports = { signup, login };
+const search = (req, res) => {};
+
+module.exports = { signup, login, search };
