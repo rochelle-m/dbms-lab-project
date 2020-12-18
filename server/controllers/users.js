@@ -1,4 +1,4 @@
-const User = require("../models/users.model.js");
+const { User } = require("../models/users");
 
 const signup = (req, res) => {
   if (!req.body) {
