@@ -10,6 +10,8 @@ app.register(require("fastify-cors"));
 app.post("/register", signup);
 app.post("/login", login);
 
+app.get("/user", searchUser);
+
 app.get("/search", search);
 
 app.listen(3001).then(() => {

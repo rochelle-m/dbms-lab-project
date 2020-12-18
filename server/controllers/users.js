@@ -1,4 +1,4 @@
-const { User } = require("../models/users");
+const { User, search } = require("../models/users");
 
 const signup = (req, res) => {
   if (!req.body) {
@@ -37,6 +37,12 @@ const login = (req, res) => {
   });
 };
 
-const search = (req, res) => {};
+const searchUser = (req, res) => {
+  const queryObj = req.query.id;
+  search(queryObj, (err, data) => {
+    if (err) throw err;
+    else res.send(data);
+  });
+};
 
-module.exports = { signup, login, search };
+module.exports = { signup, login, searchUser };

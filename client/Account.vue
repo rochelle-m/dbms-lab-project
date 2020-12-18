@@ -3,7 +3,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  async beforeRouteEnter(to, from, next) {
+    const res = await fetch(`http://localhost:3001/user?id=${to.params.id}`);
+    const data = await res.json();
+    console.log(data);
+    next();
+  },
+  mounted() {
+    console.log();
+    // const res = fetch(`http://localhost:3001/user?id=`)
+  },
+};
 </script>
 
 <style></style>

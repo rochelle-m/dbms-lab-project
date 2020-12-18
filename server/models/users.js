@@ -60,4 +60,17 @@ const emailExists = function (email, result) {
   );
 };
 
-module.exports.User = User;
+const search = function (id, result) {
+  db.query(
+    `SELECT name, email from users where idusers ='${id}'`,
+    (err, res) => {
+      if (err) {
+        result(err, null);
+        return;
+      }
+      result(null, res);
+    }
+  );
+};
+
+module.exports = { User, search };
