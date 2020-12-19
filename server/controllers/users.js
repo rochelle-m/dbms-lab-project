@@ -46,4 +46,8 @@ const searchUser = (req, res) => {
   });
 };
 
-module.exports = { signup, login, searchUser };
+const update = (req, res) => {
+  console.log(req.body);
+};
+
+module.exports = { signup, login, searchUser, update };

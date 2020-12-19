@@ -66,7 +66,7 @@ const emailExists = function (email, result) {
 
 const search = function (id, result) {
   db.query(
-    `SELECT name, email from users where idusers ='${id}'`,
+    `SELECT name, email, timestamp from users where idusers ='${id}'`,
     (err, res) => {
       if (err) {
         result(err, null);
