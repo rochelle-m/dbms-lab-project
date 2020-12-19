@@ -47,10 +47,11 @@ const searchUser = (req, res) => {
 };
 
 const update = (req, res) => {
-  console.log(req.body);
   updateUser(req.body, (err, data) => {
-    if (err) throw err;
-    else res.send(data);
+    if (err) {
+      console.log(err);
+      res.send({ message: err.message });
+    } else res.send(data);
   });
 };
 

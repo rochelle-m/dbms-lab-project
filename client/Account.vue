@@ -49,6 +49,8 @@ export default {
         body: JSON.stringify(this.newUser),
       });
       const data = await response.json();
+      // console.log(data.affectedRows && );
+      alert((data.affectedRows && "Details updated!") || data.message);
       const userId = this.$route.params.id;
       const res = await fetch(`http://localhost:3001/user?id=${userId}`);
       const data1 = await res.json();

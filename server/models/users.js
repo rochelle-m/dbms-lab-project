@@ -78,15 +78,23 @@ const search = function (id, result) {
 };
 
 const updateUser = function ({ id, name, email }, result) {
-  db.query(
-    `update users set name = '${name}', email = '${email}' where idUsers = ${id}`,
-    (err, res) => {
-      if (err) {
-        result(err, null);
-        return;
-      }
-      result(null, res);
+  emailExists(email, (res) => {
+    if (res.id != undefined && res.id != id) {
+      result({ message: "Duplicate email" }, null);
+      return;
     }
-  );
+    db.query(
+      `update users set name = '${name}', email = '${email}' where idUsers = ${id}`,
+      (err, res) => {
+        if (err) {
+          console.log(err);
+          result(err, null);
+          return;
+        }
+        console.log(res);
+        result(null, res);
+      }
+    );
+  });
 };
 module.exports = { User, search, updateUser };
