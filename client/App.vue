@@ -28,6 +28,8 @@
 <script>
 import MyForm from "./MyForm.vue";
 import request from "./utils/request.js";
+import sha512 from "./sha512";
+
 export default {
   components: {
     MyForm,
@@ -57,7 +59,9 @@ export default {
       [this.login, this.signUp] = [true, false];
     },
     setValues(value, name) {
-      this.user[name] = value;
+      if (name == "password") this.user.password = sha512(value);
+      else this.user[name] = value;
+      console.log(this.user);
     },
     async onSubmit(path) {
       const data = await request(`http://localhost:3001/${path}`, this.user);
