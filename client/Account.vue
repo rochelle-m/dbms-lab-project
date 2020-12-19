@@ -10,10 +10,6 @@ export default {
     console.log(data);
     next();
   },
-  mounted() {
-    console.log();
-    // const res = fetch(`http://localhost:3001/user?id=`)
-  },
 };
 </script>
 
