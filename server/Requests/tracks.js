@@ -23,7 +23,7 @@ let params = {
 
   tracksData.tracks.map((track) => {
     db.query(
-      `INSERT INTO tracks (idtracks, name, explicit, href, image_url, album_id) values ('${track.id}', '${track.name}', ${track.explicit}, '${track.href}', '${track.album.images[0].url}', '${track.album.id}')`,
+      `INSERT INTO tracks (id, name, explicit, href, image_url, album_id) values ('${track.id}', '${track.name}', ${track.explicit}, '${track.href}', '${track.album.images[0].url}', '${track.album.id}')`,
       (err, res) => {
         if (err) {
           console.log(err);

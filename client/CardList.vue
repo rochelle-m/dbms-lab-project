@@ -10,7 +10,7 @@
         </template>
         <template v-slot:title>
           <a :href="item.url">url</a>
-          <div class="like" @click="like(item.name)">🖤</div>
+          <div class="like" @click="like(item.id)">{{ liked }}</div>
         </template>
       </card>
     </div>
@@ -33,8 +33,14 @@ export default {
   },
   methods: {
     like(name) {
+      //request to enter like
       console.log(name);
     },
+  },
+  data() {
+    return {
+      liked: "🖤",
+    };
   },
 };
 </script>

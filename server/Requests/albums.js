@@ -34,7 +34,7 @@ const fetch = require("node-fetch");
 
   data.albums.map((g) => {
     db.query(
-      `INSERT INTO db.albums(id_album, name,album_artist,href,release_date, image_url) VALUES( '${g.id}', '${g.name}','${g.artists[0].id}','${g.href}', '${g.release_date}', '${g.images[0].url}');`,
+      `INSERT INTO db.albums(id, name,album_artist,href,release_date, image_url) VALUES( '${g.id}', '${g.name}','${g.artists[0].id}','${g.href}', '${g.release_date}', '${g.images[0].url}');`,
       (err, res) => {
         if (err) {
           console.log(err.sqlMessage);

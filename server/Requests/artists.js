@@ -23,7 +23,7 @@ let params = {
 
   data.artists.map((artist) => {
     db.query(
-      `INSERT INTO artists (idartist, artist_name, url, followers, image_url, popularity) VALUES ('${artist.id}', '${artist.name}', '${artist.external_urls.spotify}', ${artist.followers.total}, '${artist.images[1].url}', ${artist.popularity})`,
+      `INSERT INTO artists (id, artist_name, url, followers, image_url, popularity) VALUES ('${artist.id}', '${artist.name}', '${artist.external_urls.spotify}', ${artist.followers.total}, '${artist.images[1].url}', ${artist.popularity})`,
       (err, res) => {
         if (err) {
           console.log(err.errno);
