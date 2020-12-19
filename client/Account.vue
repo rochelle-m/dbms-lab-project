@@ -49,6 +49,11 @@ export default {
         body: JSON.stringify(this.newUser),
       });
       const data = await response.json();
+      const userId = this.$route.params.id;
+      const res = await fetch(`http://localhost:3001/user?id=${userId}`);
+      const data1 = await res.json();
+      this.user = data1[0];
+      console.log(data1);
     },
     setValues(value, name) {
       this.newUser[name] = value;
@@ -70,6 +75,7 @@ export default {
         email: "",
       },
       newUser: {
+        id: this.$route.params.id,
         name: "",
         email: "",
       },

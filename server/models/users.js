@@ -77,4 +77,16 @@ const search = function (id, result) {
   );
 };
 
-module.exports = { User, search };
+const updateUser = function ({ id, name, email }, result) {
+  db.query(
+    `update users set name = '${name}', email = '${email}' where idUsers = ${id}`,
+    (err, res) => {
+      if (err) {
+        result(err, null);
+        return;
+      }
+      result(null, res);
+    }
+  );
+};
+module.exports = { User, search, updateUser };

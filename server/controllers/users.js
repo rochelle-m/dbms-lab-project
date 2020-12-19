@@ -1,4 +1,4 @@
-const { User, search } = require("../models/users");
+const { User, search, updateUser } = require("../models/users");
 
 const signup = (req, res) => {
   if (!req.body) {
@@ -48,6 +48,10 @@ const searchUser = (req, res) => {
 
 const update = (req, res) => {
   console.log(req.body);
+  updateUser(req.body, (err, data) => {
+    if (err) throw err;
+    else res.send(data);
+  });
 };
 
 module.exports = { signup, login, searchUser, update };
