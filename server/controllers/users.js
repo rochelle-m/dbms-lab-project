@@ -11,6 +11,7 @@ const signup = (req, res) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
+    timestamp: req.body.timestamp,
   });
 
   newUser.create(newUser, (err, data) => {

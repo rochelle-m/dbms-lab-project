@@ -47,6 +47,7 @@ export default {
         name: "",
         password: "",
         email: "",
+        timestamp: null,
       },
       auth: false,
     };
@@ -61,9 +62,12 @@ export default {
     setValues(value, name) {
       if (name == "password") this.user.password = sha512(value);
       else this.user[name] = value;
-      console.log(this.user);
     },
     async onSubmit(path) {
+      const today = new Date(Date.now());
+      this.user.timestamp = today.toLocaleDateString().replace(/\//g, "-");
+
+      console.log(this.user);
       const data = await request(`http://localhost:3001/${path}`, this.user);
       console.log(data);
       this.auth = data.auth;

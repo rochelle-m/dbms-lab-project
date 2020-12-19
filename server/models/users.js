@@ -5,6 +5,7 @@ class User {
     this.email = user.email;
     this.name = user.name;
     this.password = user.password;
+    this.timestamp = user.timestamp;
   }
 
   create(newUser, result) {
@@ -13,13 +14,16 @@ class User {
         result({ message: "Duplicate email", auth: false }, null);
         return;
       }
-      db.query("INSERT INTO users SET ?", newUser, (err, res) => {
-        if (err) {
-          result({ ...err, auth: false }, null);
-          return;
+      db.query(
+        `INSERT INTO users (name, email, password, timestamp) VALUES ('${newUser.name}', '${newUser.email}', '${newUser.password}', STR_to_date('${newUser.timestamp}', '%c-%e-%Y'))`,
+        (err, res) => {
+          if (err) {
+            result({ ...err, auth: false }, null);
+            return;
+          }
+          result(null, { id: res.insertId, ...newUser, auth: true });
         }
-        result(null, { id: res.insertId, ...newUser, auth: true });
-      });
+      );
     });
   }
 
