@@ -11,7 +11,7 @@ let params = {
 
 (async function () {
   const res = await fetch(
-    "	https://api.spotify.com/v1/tracks?ids=" + params.ids,
+    "https://api.spotify.com/v1/tracks?ids=" + params.ids,
     {
       method: "GET",
       headers: {
@@ -21,23 +21,16 @@ let params = {
   );
   const tracksData = await res.json();
 
-  const trackObjs = tracksData.tracks.map(
-    ({ id, name, explicit, href, album }) => ({
-      idtracks: id,
-      name,
-      explicit,
-      href,
-      album_id: album.id,
-    })
-  );
-
-  trackObjs.map((track) => {
-    db.query("INSERT INTO tracks SET ?", track, (err, res) => {
-      if (err) {
-        console.log(err.errno);
-        return;
+  tracksData.tracks.map((track) => {
+    db.query(
+      `INSERT INTO tracks (idtracks, name, explicit, href, image_url, album_id) values ('${track.id}', '${track.name}', ${track.explicit}, '${track.href}', '${track.album.images[0].url}', '${track.album.id}')`,
+      (err, res) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log(res);
       }
-      console.log(res);
-    });
+    );
   });
 })();

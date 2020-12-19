@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const albumIds = require("./ids.albums.js");
+const albumIds = require("./ids/albums.js");
 
 let params = {
   ids: albumIds.join(","),
@@ -11,7 +11,7 @@ const fetch = require("node-fetch");
 
 // running this only the first time
 // db.query(
-//   `CREATE TABLE albums (id_album VARCHAR(45) PRIMARY KEY,album_name VARCHAR(45) NULL,album_artist VARCHAR(45) NULL,href VARCHAR(64) NULL, release_date VARCHAR(45) NULL, INDEX FK2_idx (album_artist ASC), CONSTRAINT FK2  FOREIGN KEY (album_artist) REFERENCES db.artists (idartist) ON DELETE NO ACTION ON UPDATE NO ACTION);`,
+//   `CREATE TABLE albums (id_album VARCHAR(45) PRIMARY KEY,name VARCHAR(45) NULL,album_artist VARCHAR(45) NULL,href VARCHAR(64) NULL, release_date VARCHAR(45) NULL, INDEX FK2_idx (album_artist ASC), CONSTRAINT FK2  FOREIGN KEY (album_artist) REFERENCES db.artists (idartist) ON DELETE NO ACTION ON UPDATE NO ACTION);`,
 //   (err, res) => {
 //     if (err) {
 //       console.log(err);
@@ -34,7 +34,7 @@ const fetch = require("node-fetch");
 
   data.albums.map((g) => {
     db.query(
-      `INSERT INTO db.albums(id_album,album_name,album_artist,href,release_date) VALUES( '${g.id}', '${g.name}','${g.artists[0].id}','${g.href}', '${g.release_date}');`,
+      `INSERT INTO db.albums(id_album, name,album_artist,href,release_date, image_url) VALUES( '${g.id}', '${g.name}','${g.artists[0].id}','${g.href}', '${g.release_date}', '${g.images[0].url}');`,
       (err, res) => {
         if (err) {
           console.log(err.sqlMessage);
