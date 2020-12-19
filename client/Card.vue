@@ -23,8 +23,9 @@ export default {};
   background-color: white;
   color: rgb(20, 20, 41);
   border-radius: 8px;
-  width: 160px;
-  margin: 0 5px;
+  width: 200px;
+  margin: 14px 5px;
+  padding: 10px 2px;
   cursor: pointer;
   justify-content: center;
 }
@@ -36,7 +37,6 @@ export default {};
 .title {
   width: inherit;
   padding: 6px;
-  text-transform: capitalize;
   margin: 0 auto;
   text-align: center;
 }

@@ -1,24 +1,39 @@
 <template>
   <div class="list">
-    <card v-for="item in dataItems" :key="item.id">
-      <template v-slot:type>{{ item.type }}</template>
-      <template v-slot:image>
-        <img :src="item?.images[0]?.url" alt="" />
-      </template>
-      <template v-slot:title> {{ item.name }} </template>
-    </card>
+    <div v-for="items in dataItems" :key="items">
+      <card v-for="item in items" :key="item">
+        <template v-slot:type>
+          {{ item.name }}
+        </template>
+        <template v-slot:image>
+          <img :src="item.image_url" alt="" />
+        </template>
+        <template v-slot:title>
+          <a :href="item.url">url</a>
+          <div class="like" @click="like(item.name)">🖤</div>
+        </template>
+      </card>
+    </div>
   </div>
 </template>
 
 <script>
 import Card from "./Card.vue";
 export default {
+  mounted() {
+    console.log(this.dataItems);
+  },
   components: {
     Card,
   },
   props: {
     dataItems: {
       type: Array,
+    },
+  },
+  methods: {
+    like(name) {
+      console.log(name);
     },
   },
 };
@@ -28,7 +43,7 @@ export default {
 .list {
   margin: 4vh 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 img {

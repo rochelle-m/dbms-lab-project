@@ -35,11 +35,7 @@
     </nav>
     {{ currentCategory }}
     <div>
-      <card-list :dataItems="artists" />
-      <card-list :dataItems="albums" />
-      <card-list :dataItems="episodes" />
-      <card-list :dataItems="playlists" />
-      <card-list :dataItems="tracks" />
+      <card-list :dataItems="queryRes" />
     </div>
   </div>
 </template>
@@ -59,11 +55,7 @@ export default {
   },
   data() {
     return {
-      tracks: [],
-      artists: [],
-      playlists: [],
-      episodes: [],
-      albums: [],
+      queryRes: [],
       allTypes: [],
       currentCategory: "",
       searchStr: "",
@@ -72,7 +64,6 @@ export default {
   methods: {
     selected({ name, show }) {
       this.currentCategory = name;
-      // this.categories.filter((c) => c.name == name)[0].show = true;
 
       console.log(this.categories);
     },
@@ -83,6 +74,7 @@ export default {
       );
 
       const data = await res.json();
+      this.queryRes = data;
       console.log(data);
     },
     getInputTextOnClick($evt) {
