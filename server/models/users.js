@@ -113,7 +113,7 @@ const getLikedSongsForUser = function (id, result) {
     `SELECT * from tracks where id in (SELECT song_id from liked where id = ${id})`,
     (err, res) => {
       if (err) {
-        result({ ...err, auth: false }, null);
+        result({ ...err }, null);
         return;
       }
       result(null, res);
