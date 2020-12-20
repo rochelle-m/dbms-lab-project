@@ -1,4 +1,4 @@
-const { User, search, updateUser } = require("../models/users");
+const { User, search, updateUser, likeSong } = require("../models/users");
 
 const signup = (req, res) => {
   if (!req.body) {
@@ -55,4 +55,13 @@ const update = (req, res) => {
   });
 };
 
-module.exports = { signup, login, searchUser, update };
+const like = (req, res) => {
+  console.log(req.body);
+  likeSong(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.send({ message: err.message });
+    } else res.send(data);
+  });
+};
+module.exports = { signup, login, searchUser, update, like };

@@ -97,4 +97,14 @@ const updateUser = function ({ id, name, email }, result) {
     );
   });
 };
-module.exports = { User, search, updateUser };
+
+const likeSong = function (packet, result) {
+  db.query(`INSERT INTO liked SET ?`, packet, (err, res) => {
+    if (err) {
+      result({ ...err, auth: false }, null);
+      return;
+    }
+    result(null, { id: res.insertId });
+  });
+};
+module.exports = { User, search, updateUser, likeSong };

@@ -1,6 +1,12 @@
 const fastify = require("fastify");
 
-const { signup, login, searchUser, update } = require("./controllers/users");
+const {
+  signup,
+  login,
+  searchUser,
+  update,
+  like,
+} = require("./controllers/users");
 const search = require("./controllers/search.js");
 
 const app = fastify();
@@ -9,6 +15,7 @@ app.register(require("fastify-cors"));
 
 app.post("/register", signup);
 app.post("/login", login);
+app.post("/like", like);
 
 app.put("/user", update);
 
