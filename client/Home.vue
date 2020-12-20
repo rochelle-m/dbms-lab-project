@@ -35,7 +35,7 @@
     </nav>
     {{ currentCategory }}
     <div>
-      <card-list :dataItems="queryRes" />
+      <card-list :dataItems="queryRes" :id="id" />
     </div>
   </div>
 </template>
@@ -59,7 +59,13 @@ export default {
       allTypes: [],
       currentCategory: "",
       searchStr: "",
+      id: null,
     };
+  },
+  mounted() {
+    const userId = this.$route.params.id;
+    this.id = userId;
+    console.log(this.id);
   },
   methods: {
     selected({ name, show }) {

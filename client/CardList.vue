@@ -10,7 +10,7 @@
         </template>
         <template v-slot:title>
           <a :href="item.url">url</a>
-          <controls :item="item" />
+          <controls :item="item" :id="id" />
         </template>
       </card>
     </div>
@@ -33,6 +33,9 @@ export default {
   props: {
     dataItems: {
       type: Array,
+    },
+    id: {
+      type: Number,
     },
   },
   methods: {},
