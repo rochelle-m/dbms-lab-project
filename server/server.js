@@ -6,6 +6,7 @@ const {
   searchUser,
   update,
   like,
+  getUsersLikes,
 } = require("./controllers/users");
 const search = require("./controllers/search.js");
 
@@ -20,6 +21,7 @@ app.post("/like", like);
 app.put("/user", update);
 
 app.get("/user", searchUser);
+app.get("/likes", getUsersLikes);
 
 app.get("/search", search);
 

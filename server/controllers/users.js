@@ -1,4 +1,10 @@
-const { User, search, updateUser, likeSong } = require("../models/users");
+const {
+  User,
+  search,
+  updateUser,
+  likeSong,
+  getLikedSongsForUser,
+} = require("../models/users");
 
 const signup = (req, res) => {
   if (!req.body) {
@@ -64,4 +70,13 @@ const like = (req, res) => {
     } else res.send(data);
   });
 };
-module.exports = { signup, login, searchUser, update, like };
+
+const getUsersLikes = (req, res) => {
+  getLikedSongsForUser(req.query.id, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.send({ message: err.message });
+    } else res.send(data);
+  });
+};
+module.exports = { signup, login, searchUser, update, like, getUsersLikes };

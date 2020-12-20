@@ -35,6 +35,11 @@ export default {
     const data = await res.json();
     this.user = data[0];
     console.log(this.user);
+
+    const resLikes = await fetch(`http://localhost:3001/likes?id=${userId}`);
+    const dataLikes = await resLikes.json();
+
+    console.log(dataLikes);
   },
   methods: {
     canEdit() {

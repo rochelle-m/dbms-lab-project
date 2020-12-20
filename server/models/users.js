@@ -107,4 +107,17 @@ const likeSong = function (packet, result) {
     result(null, { id: res.insertId });
   });
 };
-module.exports = { User, search, updateUser, likeSong };
+
+const getLikedSongsForUser = function (id, result) {
+  db.query(
+    `SELECT * from tracks where id in (SELECT song_id from liked where id = ${id})`,
+    (err, res) => {
+      if (err) {
+        result({ ...err, auth: false }, null);
+        return;
+      }
+      result(null, res);
+    }
+  );
+};
+module.exports = { User, search, updateUser, likeSong, getLikedSongsForUser };
