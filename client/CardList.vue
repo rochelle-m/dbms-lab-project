@@ -10,7 +10,7 @@
         </template>
         <template v-slot:title>
           <a :href="item.url">url</a>
-          <div class="like" @click="like(item.id)">{{ liked }}</div>
+          <controls :item="item" />
         </template>
       </card>
     </div>
@@ -19,24 +19,23 @@
 
 <script>
 import Card from "./Card.vue";
+import Controls from "./Controls.vue";
+
 export default {
   mounted() {
     console.log(this.dataItems);
   },
   components: {
     Card,
+    Controls,
+    Controls,
   },
   props: {
     dataItems: {
       type: Array,
     },
   },
-  methods: {
-    like(name) {
-      //request to enter like
-      console.log(name);
-    },
-  },
+  methods: {},
   data() {
     return {
       liked: "🖤",
