@@ -22,7 +22,7 @@ const search = ({ val, type }, result) => {
           response.push(res1);
 
           sql.query(
-            `select * from tracks where album_id in (select id from albums where album_artist = (SELECT id from artists where name LIKE '%${val}%'))`,
+            `select * from tracks where album_id in (select id from albums where album_artist in (SELECT id from artists where name LIKE '%${val}%'))`,
             (err, res2) => {
               if (err) {
                 console.log("error: ", err);

@@ -39,7 +39,7 @@
     </div>
     <div class="my-liked">
       <h3>Your liked songs</h3>
-      <div v-for="item in dataLikes">
+      <div v-for="item in dataLikes" :key="item.id">
         <div>{{ item.name }}</div>
         <img :src="item.image_url" alt="" />
       </div>
