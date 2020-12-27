@@ -35,6 +35,6 @@ The user can register. The user can like songs, create playlists, follow their f
 
 ### Sequence Diagram
 
-![Sequence Diagram](/src/images/UML/seq.png)
+![Sequence Diagram](/images/UML/seq.png)
 
 ### Snapshots
